@@ -48,11 +48,8 @@ Antes de invertir tiempo en desarrollo o pruebas técnicas, toda idea debe pasar
 
 ## 📊 4. Diagramas de Proceso (Mermaid)
 
-> *Nota: GitHub renderizará automáticamente estos bloques de código como diagramas.*
-
 ### Flujograma Formal: Ciclo de Vida Lean AI
 
-```mermaid
 ```mermaid
 flowchart TD
     A([Idea / Necesidad de Negocio]) --> B[Ficha Única - One Pager]
