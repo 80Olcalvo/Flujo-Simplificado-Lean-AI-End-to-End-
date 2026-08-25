@@ -53,29 +53,36 @@ Antes de invertir tiempo en desarrollo o pruebas técnicas, toda idea debe pasar
 ### Flujograma Formal: Ciclo de Vida Lean AI
 
 ```mermaid
+```mermaid
 flowchart TD
-    classDef start_end fill:#2c3e50,stroke:#fff,stroke-width:2px,color:#fff
-    classDef phase1 fill:#3498db,stroke:#2980b9,color:#fff
-    classDef phase2 fill:#e67e22,stroke:#d35400,color:#fff
-    classDef phase3 fill:#27ae60,stroke:#2ecc71,color:#fff
-    classDef decision fill:#8e44ad,stroke:#9b59b6,color:#fff
-
-    A([Idea / Necesidad de Negocio]) ::: start_end --> B[Ficha Única - One Pager] ::: phase1
-    B --> C{Reunión Alineación 30m} ::: decision
-    C -->|Bajo Impacto / Alto Esfuerzo| Z([Archivar / Descartar]) ::: start_end
-    C -->|Quick Win / Estratégico| D[PoC Timeboxed 10 días] ::: phase2
+    A([Idea / Necesidad de Negocio]) --> B[Ficha Única - One Pager]
+    B --> C{Reunión Alineación 30m}
+    C -->|Bajo Impacto / Alto Esfuerzo| Z([Archivar / Descartar])
+    C -->|Quick Win / Estratégico| D[PoC Timeboxed 10 días]
     
-    D --> E{¿PoC Exitosa?} ::: decision
-    E -->|No| Y([Cancelar Iniciativa]) ::: start_end
-    E -->|Sí| F[Cálculo Costos TCO] ::: phase2
+    D --> E{¿PoC Exitosa?}
+    E -->|No| Y([Cancelar Iniciativa])
+    E -->|Sí| F[Cálculo Costos TCO]
     
-    F --> G{Aprobación Financiera Directa} ::: decision
+    F --> G{Aprobación Financiera Directa}
     G -->|Rechazado| Y
-    G -->|Aprobado| H[Desarrollo Ágil Kanban] ::: phase3
+    G -->|Aprobado| H[Desarrollo Ágil Kanban]
     
-    H --> I[Paso a Producción] ::: phase3
-    I --> J[Transición Operativa & Creación de Runbook] ::: phase3
-    J --> K([Solución Operativa]) ::: start_end
+    H --> I[Paso a Producción]
+    I --> J[Transición Operativa & Creación de Runbook]
+    J --> K([Solución Operativa])
+
+    classDef start_end fill:#2c3e50,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef phase1 fill:#3498db,stroke:#2980b9,color:#fff;
+    classDef phase2 fill:#e67e22,stroke:#d35400,color:#fff;
+    classDef phase3 fill:#27ae60,stroke:#2ecc71,color:#fff;
+    classDef decision fill:#8e44ad,stroke:#9b59b6,color:#fff;
+
+    class A,Z,Y,K start_end;
+    class B phase1;
+    class D,F phase2;
+    class H,I,J phase3;
+    class C,E,G decision;
 ```
 
 ### Diagrama de Secuencia
