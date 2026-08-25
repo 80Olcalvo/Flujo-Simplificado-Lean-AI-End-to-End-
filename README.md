@@ -84,7 +84,7 @@ flowchart TD
 
 ### Diagrama de Secuencia
 
-mermaid
+```mermaid
 
 sequenceDiagram
     autonumber
@@ -118,3 +118,4 @@ sequenceDiagram
     else Es Baja Prioridad o Inviable
         LT-->>PO: Rechaza, Archiva o Pospone Iniciativa
     end
+```
