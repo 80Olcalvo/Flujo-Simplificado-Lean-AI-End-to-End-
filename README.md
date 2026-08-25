@@ -84,6 +84,8 @@ flowchart TD
 
 ### Diagrama de Secuencia
 
+mermaid
+
 sequenceDiagram
     autonumber
     participant PO as Product Owner
