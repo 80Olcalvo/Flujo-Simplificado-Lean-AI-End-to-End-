@@ -81,36 +81,33 @@ flowchart TD
 ### Diagrama de Secuencia
 
 ```mermaid
-sequenceDiagram
-    autonumber
-    participant PO as Product Owner
-    participant LT as Líder Técnico
-    participant DEV as Desarrollador / DevOps
+flowchart TD
+    A([Idea / Necesidad de Negocio]) --> B[Ficha Única - One Pager]
+    B --> C{Reunión Alineación 30m}
+    C -->|Bajo Impacto / Alto Esfuerzo| Z([Archivar / Descartar])
+    C -->|Quick Win / Estratégico| D[PoC Timeboxed 10 días]
+    
+    D --> E{¿PoC Exitosa?}
+    E -->|No| Y([Cancelar Iniciativa])
+    E -->|Sí| F[Cálculo Costos TCO]
+    
+    F --> G{Aprobación Financiera Directa}
+    G -->|Rechazado| Y
+    G -->|Aprobado| H[Desarrollo Ágil Kanban]
+    
+    H --> I[Paso a Producción]
+    I --> J[Transición Operativa & Creación de Runbook]
+    J --> K([Solución Operativa])
 
-    rect rgb(230, 240, 255)
-    Note over PO,DEV: FASE 1: ENTRADA Y FILTRO EXPRESS
-    PO->>LT: Presenta Ficha Única (Idea, KPIs, Datos)
-    LT-->>PO: Analiza Viabilidad de Datos y Seguridad
-    LT->>LT: Clasificación en Matriz de Prioridad
-    end
+    classDef start_end fill:#2c3e50,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef phase1 fill:#3498db,stroke:#2980b9,color:#fff;
+    classDef phase2 fill:#e67e22,stroke:#d35400,color:#fff;
+    classDef phase3 fill:#27ae60,stroke:#2ecc71,color:#fff;
+    classDef decision fill:#8e44ad,stroke:#9b59b6,color:#fff;
 
-    alt Es Quick Win / Prioritario
-        rect rgb(255, 240, 230)
-        Note over PO,DEV: FASE 2: PoC Y APROBACIÓN
-        PO->>DEV: Aprueba inicio de Prueba de Concepto (PoC)
-        DEV->>DEV: Ejecuta PoC (Máximo 10 días)
-        DEV-->>LT: Entrega resultados técnicos y consumo
-        LT->>PO: Presenta Costos (TCO) y Viabilidad Final
-        PO->>DEV: Aprueba Presupuesto (GO)
-        end
-
-        rect rgb(230, 255, 240)
-        Note over PO,DEV: FASE 3: CONSTRUCCIÓN Y DESPLIEGUE
-        DEV->>DEV: Desarrollo Ágil y MLOps Básico
-        DEV->>DEV: Despliegue en Producción
-        DEV-->>PO: Entrega Solución y Runbook de Soporte
-        end
-    else Es Baja Prioridad o Inviable
-        LT-->>PO: Rechaza, Archiva o Pospone Iniciativa
-    end
+    class A,Z,Y,K start_end;
+    class B phase1;
+    class D,F phase2;
+    class H,I,J phase3;
+    class C,E,G decision;
 ```
